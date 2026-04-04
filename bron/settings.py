@@ -67,11 +67,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bron.urls'
+
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",   # фронт локально
-    "https://your-frontend.vercel.app",  # твой фронт
-]
     
 TEMPLATES = [
     {
@@ -93,16 +90,25 @@ WSGI_APPLICATION = 'bron.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'deskly_db',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+
+if "VERCEL" in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': '/tmp/db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('POSTGRES_DB', 'deskly_db'),
+            'USER': os.getenv('POSTGRES_USER', 'postgres'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres12345'),
+            'HOST': os.getenv('POSTGRES_HOST', 'postgres'),
+            'PORT': os.getenv('POSTGRES_PORT', '5432'),
+        }
+    }
 
 
 
