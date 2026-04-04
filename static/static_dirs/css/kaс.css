@@ -1,0 +1,698 @@
+/* Контейнер хедера */
+
+/* Обнуляем отступы браузера для всего сайта */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* На всякий случай явно пропишем для body */
+body {
+    margin: 0;
+    padding: 0;
+    /* ваши остальные стили... */
+}
+
+.header1 {
+    display: flex;
+    justify-content: space-between;
+}
+.wz-action-container {
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.wz-btn-offer {
+    display: inline-block;
+    background-color: #0052cc;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-link a {
+    background-color: #ff9100; /* Оранжевая кнопка */
+    color: #002d5b !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+
+.wz-btn-offer:hover {
+    background-color: #0041a3;
+}
+
+.wz-btn-offer:active {
+    transform: scale(0.98);
+}
+
+
+.wz-header {
+    background-color: #00254d;
+    /* Темно-синий фон */
+    padding: 20px 0;
+    width: 100%;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/* Ограничитель ширины */
+.wz-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Стили логотипа */
+.wz-logo-text {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #ffffff;
+    /* Белая линия под текстом */
+    padding-bottom: 2px;
+    display: inline-block;
+}
+
+/* Группа навигации */
+.wz-nav-box {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Список меню */
+.wz-menu-list {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ссылки меню */
+.wz-menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: opacity 0.2s ease;
+}
+
+.wz-menu-link:hover {
+    opacity: 0.7;
+}
+
+
+.wz-action-container{
+    display:flex;
+    gap:14px;
+}
+
+/* Общая база */
+.action-btn{
+    padding:12px 22px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.25s;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Главная кнопка */
+.offer-btn{
+    background:#1f6bff;
+    color:white;
+    box-shadow:0 6px 20px rgba(31,107,255,0.35);
+}
+
+.offer-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 28px rgba(31,107,255,0.45);
+}
+.show-btn{
+    background:white;
+    color:#1f6bff;
+    border:2px solid #1f6bff;
+}
+
+.show-btn:hover{
+    background:#1f6bff;
+    color:white;
+}
+
+
+.wz-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wz-badge-counter {
+    background-color: #ff9500;
+    color: #000000;
+    padding: 0 20px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Кнопка Logout */
+.wz-btn-logout {
+    background-color: #ff9500;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: lowercase;
+    /* Маленькие буквы как на фото */
+    transition: background-color 0.2s;
+}
+
+.wz-btn-logout:hover {
+    background-color: #e68600;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+
+.content-side {
+    flex: 1;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+}
+
+.intro-text {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.steps {
+    margin-bottom: 40px;
+}
+
+.step {
+    margin-bottom: 25px;
+}
+
+.step h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* 1. Сброс отступов, чтобы ничего не липло к краям браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 2. Сама секция контактов */
+.wz-c-section {
+    padding: 80px 0;
+    /* Отступы сверху и снизу всей секции */
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+}
+
+/* 3. Центрирующий контейнер — ОЧЕНЬ ВАЖНО */
+.wz-c-container {
+    max-width: 1200px;
+    /* Ограничиваем ширину как на фото */
+    margin: 0 auto;
+    /* Центрируем блок по горизонтали */
+    padding: 0 20px;
+    /* Внутренние отступы, чтобы текст не касался краев экрана на мобилках */
+}
+
+/* 4. Заголовок и описание */
+.wz-c-main-heading {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.wz-c-intro {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+    max-width: 800px;
+    /* Описание не должно быть на всю ширину */
+    margin-bottom: 50px;
+}
+
+/* 5. СЕТКА КАРТОЧЕК — Исправляем выравнивание в лево */
+.wz-c-grid {
+    display: flex;
+    /* Включаем гибкий контейнер */
+    justify-content: flex-start;
+    /* Начинаем от левого края контейнера */
+    gap: 30px;
+    /* Расстояние между карточками */
+    flex-wrap: nowrap;
+    /* Запрещаем перенос на новую строку (для ПК) */
+}
+
+/* 6. Стили самих карточек */
+.wz-c-card {
+    flex: 1;
+    /* Все карточки будут одинаковой ширины */
+    background-color: #f8fafd;
+    /* Светлый фон как на макете */
+    padding: 40px 30px;
+    /* Внутренние отступы внутри карточки */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    /* Минимальная высота, чтобы они были ровными */
+}
+
+.wz-c-card-title {
+    color: #004a99;
+    /* Синий заголовок */
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.wz-c-card-detail {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.wz-c-card-footer {
+    margin-top: auto;
+    /* Прижимает CoC и НДС к самому низу карточки */
+    padding-top: 30px;
+}
+
+.wz-c-tax-info {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+/* Стили для иконок в контактах */
+.wz-c-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.wz-c-icon {
+    width: 20px;
+    color: #004a99;
+}
+
+/* Синяя ссылка "Пообщайтесь с нами" */
+.wz-c-chat-box {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.wz-c-chat-text {
+    font-size: 20px;
+    color: #004a99;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.step p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Кнопка */
+.btn-primary {
+    display: inline-block;
+    background-color: #0052cc;
+    /* Тот самый синий цвет */
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+.listing-section {
+    padding: 60px 0;
+}
+
+.listing-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.listing-card {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr 0.8fr;
+    gap: 25px;
+
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.listing-gallery {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 250px;
+}
+
+.listing-gallery .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.listing-gallery .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.listing-gallery .gallery-arrow:hover {
+    opacity: 1;
+}
+
+.gallery-arrow.arrow-left {
+    left: 10px;
+}
+
+.gallery-arrow.arrow-right {
+    right: 10px;
+}
+
+
+.listing-info {
+    padding-right: 20px;
+}
+
+.provider-name {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.listing-info h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #002d5b;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.listing-info h2 i {
+    color: #007bff;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.address {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.description {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.rating-container{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100px;
+    display: flex;
+    gap: 7px;
+}
+.rating-text{
+    font-size: 16px;
+    color: #002d5b;
+}
+.rating-badge{
+    width: 50px;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.listing-pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-left: 20px;
+    border-left: 1px solid #eee;
+}
+
+.rating-box {
+    text-align: right;
+    width: 100%;
+}
+
+.rating-text {
+    font-size: 14px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rating-score {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.rating-excellent {
+    background-color: #007bff;
+}
+
+.rating-good {
+    background-color: #27ae60;
+}
+
+.price-box {
+    text-align: right;
+}
+
+.price-label {
+    font-size: 14px;
+    color: #777;
+    display: block;
+}
+
+.price-value {
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+}
+
+.navim {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+
+
+.btn-book {
+    background-color: #ff9100;
+    color: #002d5b;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    max-width: 180px;
+    transition: opacity 0.3s;
+    margin-top: 20px;
+}
+
+.btn-book:hover {
+    opacity: 0.9;
+}
+
+
+.btn-primary:hover {
+    background-color: #003d99;
+}
+
+/* Стили для изображения */
+.image-side {
+    flex: 1;
+}
+
+.image-side img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+
+.wz-action-container{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+/* База */
+.action-btn{
+    padding:12px 22px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.2s;
+}
+
+/* Синяя */
+.offer-btn{
+    background:#0052cc;
+    color:white;
+}
+
+.offer-btn:hover{
+    background:#003f9c;
+}
+
+/* Белая */
+.show-btn{
+    background:white;
+    color:#0052cc;
+    border:2px solid #0052cc;
+}
+
+.show-btn:hover{
+    background:#0052cc;
+    color:white;
+}
+
+/* Общий стиль кнопок */
+.action-btn {
+    padding: 10px 20px;        /* компактные отступы */
+    border-radius: 6px;        /* мягкие скругления */
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Синяя кнопка "Предложить своё" */
+.offer-btn {
+    background-color: #1f6bff; /* современный синий */
+    color: #fff;
+    border: none;
+}
+
+.offer-btn:hover {
+    background-color: #155acc; /* темнее при наведении */
+}
+
+/* Белая кнопка "Показать все места" */
+.show-btn {
+    background-color: #fff;
+    color: #1f6bff;
+    border: 2px solid #1f6bff;
+}
+
+.show-btn:hover {
+    background-color: #1f6bff;
+    color: #fff;
+}
+
+/* Немного расстояния между кнопками */
+.wz-action-container {
+    display: flex;
+    gap: 12px;
+}

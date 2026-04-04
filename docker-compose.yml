@@ -1,0 +1,87 @@
+services:
+  postgres:
+    image: postgres:15.3-alpine3.18
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - app
+
+  redis:
+    image: redis
+    ports:
+      - ${REDIS_PORT}:6379
+    env_file:
+      - .env
+    networks:
+      - app
+    restart: always
+
+  main:
+    build:
+      context: .
+    env_file:
+      - .env
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app:delegated
+    ports:
+      - ${PORT}:8000
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - app
+    restart: always
+
+  celery-tasks:
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: bron.settings
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+    command: celery -A bron.celery:app worker -l info
+    volumes:
+      - .:/app:delegated
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - app
+    restart: always
+
+  celery-beat-tasks:
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: bron.settings
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/1
+    command: celery -A bron.celery:app beat -l info
+    volumes:
+      - .:/app:delegated
+    depends_on:
+      - redis
+      - postgres
+      - celery-tasks
+    networks:
+      - app
+    restart: always
+
+networks:
+  app:
+
+volumes:
+  pgdata:

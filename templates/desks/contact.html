@@ -1,0 +1,105 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block title %}Main Page{% endblock %}
+
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как это работает</title>
+    <link rel="stylesheet" href="{% static 'css/kak.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+
+
+    <div class="head" style="display: flex; flex-direction: column; gap: 40px;">
+        <section class="how-it-works" style="margin-top: 80px;">
+            <div class="container">
+                <div class="content-side">
+                    <h1>Контакт</h1>
+                    <p class="intro-text">
+                        Бронирование происходит мгновенно — поддержка тоже должна быть такой. Нужна помощь с выбором
+                        помещения, изменением бронирования или размещением места проведения? Поговорите с реальным
+                        человеком, и мы быстро всё устроим, дадим ясные ответы и без лишних походов.
+                    </p>
+
+                </div>
+
+                <div class="image-side">
+                    <img src="{% static 'assets/img/subscribe-to-our-newsletter.webp' %}" alt="Wezoo App">
+                </div>
+            </div>
+        </section>
+
+        <section class="wz-c-section">
+            <div class="wz-c-container">
+                <h2 class="wz-c-main-heading">Свяжитесь с нами</h2>
+                <p class="wz-c-intro">
+                    Из нашего штаб-квартиры в Амстердаме мы поддерживаем клиентов и партнеров по всей Европе.
+                    Свяжитесь с нами по электронной почте, телефону или в чате — как вам удобнее всего.
+                    Мы возьмём на себя логистику, чтобы вы могли сосредоточиться на работе, которая действительно важна.
+                </p>
+
+                <div class="wz-c-grid">
+                    <div class="wz-c-card">
+                        <h3 class="wz-c-card-title">Wezoo B.V.</h3>
+                        <p class="wz-c-card-detail">'s-Gravenhekje 1A</p>
+                        <p class="wz-c-card-detail">1011 TG</p>
+                        <p class="wz-c-card-detail">Амстердам Нидерланды</p>
+                        <div class="wz-c-card-footer">
+                            <p class="wz-c-tax-info">CoC: 75625601</p>
+                            <p class="wz-c-tax-info">НДС: NL860344046B01</p>
+                        </div>
+                    </div>
+
+                    <div class="wz-c-card">
+                        <h3 class="wz-c-card-title">Wezoo Ltd.</h3>
+                        <p class="wz-c-card-detail">Гринсайд-Хаус, 50 Stn Rd.</p>
+                        <p class="wz-c-card-detail">, Вуд-Грин, Лондон,</p>
+                        <p class="wz-c-card-detail">Англия, N22 7DE</p>
+                        <div class="wz-c-card-footer">
+                            <p class="wz-c-tax-info">CoC: 15705940</p>
+                            <p class="wz-c-tax-info">НДС: GB474796042</p>
+                        </div>
+                    </div>
+
+                    <div class="wz-c-card">
+                        <h3 class="wz-c-card-title">Контакт</h3>
+                        <div class="wz-c-contact-row">
+                            <span class="wz-c-icon">✉</span>
+                            <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" class="wz-c-link"
+                                style="color: black; border: none;">abdulvaliys@gmail.com</a>
+                        </div>
+                        <div class="wz-c-contact-row">
+                            <span class="wz-c-icon">📞</span>
+                            <a href="tel:+31629403207" class="wz-c-link" style="color: black; border: none;">+996 555 22
+                                56
+                                57</a>
+                        </div>
+
+                        <div class="wz-c-chat-box">
+                            <span class="wz-c-chat-bubble">🗨</span>
+                            <a href="#" class="wz-c-chat-text">Пообщайтесь с нами</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}

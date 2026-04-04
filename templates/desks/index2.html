@@ -1,0 +1,79 @@
+{% extends 'components/base.html' %} 
+{% load static %} 
+
+{% block title %}Main Page{% endblock %} 
+
+
+
+{% block content %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как это работает</title>
+    <link rel="stylesheet" href="{% static 'css/kak.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+
+
+
+
+    <section class="how-it-works" style="margin-top: 50px; margin-bottom: 50px;">
+        <div class="container">
+            <div class="content-side">
+                <h1>Как это работает</h1>
+                <p class="intro-text">
+                    Бронирование рабочего пространства никогда не было таким простым и беспроблемным.
+                    Система бронирования Wezoo позволяет вам найти премиальные горячие столы,
+                    конференц-залы и офисы, соответствующие вашим потребностям. Это занимает всего 3 простых шага,
+                    остальное мы делаем.
+                </p>
+
+                <div class="steps">
+                    <div class="step">
+                        <h3><span>1.</span> Найдите своё рабочее пространство</h3>
+                        <p>Ищите и найдите своё рабочее пространство в таких городах, как Лондон, Берлин, Париж и
+                            Амстердам.</p>
+                    </div>
+
+                    <div class="step">
+                        <h3><span>2.</span> Сравните за секунды</h3>
+                        <p>В каждом рабочем пространстве есть чёткая цена, доступность в реальном времени и изображения,
+                            чтобы вы могли быстро выбирать между множеством вариантов.</p>
+                    </div>
+
+                    <div class="step">
+                        <h3><span>3.</span> Забронируйте мгновенно</h3>
+                        <p>менее чем за 2 минуты, заплатите безопасно онлайн и получите мгновенное подтверждение.
+                            Никаких звонков. Без бумажной волокиты.</p>
+                    </div>
+                </div>
+
+                <a href="/card/" class="btn-primary">Бронируйте сейчас</a>
+            </div>
+
+            <div class="image-side">
+                <img src="{% static 'assets/img/wezoo-book-now.jpg' %}" alt="Wezoo App">
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+{% endblock %}
+
+
+

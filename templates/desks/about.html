@@ -1,0 +1,36 @@
+{% extends 'components/base.html' %} 
+{% load static %} 
+ 
+{% block title %}Main Page{% endblock %} 
+
+
+
+{% block content %}
+
+
+
+
+    <section class="how-it-works" style="margin-top: 50px;">
+        <div class="container">
+            <div class="content-side">
+                <h1>О нас</h1>
+                <p class="intro-text">
+                    Работа эволюционировала. Команды распределены, планы меняются по часам, а встречи проходят там, где вас ведёт день.
+                </p>
+
+                <div class="steps">
+                    <div class="step">
+                        <p>Wezoo — единственная платформа рабочего пространства, созданная для этой реальности. Мгновенный доступ к премиальным конференц-залам, дневным офисам и горячим столам в 200+ городах. Сравните и забронируйте за 2 минуты — с чёткой ценой и мгновенным подтверждением — приезжайте в удобную атмосферу и сосредоточьтесь на том, что действительно важно.</p>
+                    </div>
+                </div>
+
+                <a href="/card/" class="btn-primary">Бронируйте сейчас</a>
+            </div>
+
+            <div class="image-side">
+                <img src="{% static 'assets/img/singel-126-2048x1366.jpg' %}" alt="Wezoo App">
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

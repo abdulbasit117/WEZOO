@@ -1,0 +1,215 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wezoo - Бронирование залов</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body style="color: #c1c1c1;">
+
+
+
+    <div class="hero-section" style="height: 250px;">
+        <div class="container">
+
+            <nav class="navbar">
+                <a class="logo" href="{% url 'main-page' %}">wezoo</a>
+
+                <ul class="nav-links">
+                    <li><a href="/hov">Как это работает</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contact">Контакт</a></li>
+
+                    {% if request.user.is_authenticated %}
+                    <li class="btn-link"><a class="btn-link" href="/profile/">{{request.user.username}}</a></li>
+                    <li class="btn-link"><a class="btn-link" href="/logout">logout</a></li>
+                    {% else %}
+                    <li class="btn-link"><a href="/login">Войдите</a></li>
+                    {% endif %}
+
+                </ul>
+            </nav>
+
+            <div class="hero-content" style="height: 480px;">
+                <div style="display: flex; gap: 20px; justify-content: center; text-align: center;">
+
+                    {% for i in category %}
+                    <div class="main-buttons">
+                        <a href="{% url 'hot' i.name %}#cards-section">
+                            <button class="btn btn-active">{{ i.name }}</button>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+
+                <h2>Сравнивайте и бронируйте залы для встреч с легкостью</h2>
+                <p class="subtitle">Wezoo.com позволяет мгновенно бронировать переговорные комнаты по всей Европе – всё
+                    менее чем за две минуты. Более 1000 конференц-залов доступны.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="container">
+
+            <div class="trust-indicators">
+                <div class="indicator">Excellent <span class="stars">★★★★★</span> Trustpilot</div>
+                <div class="indicator"><i class="fas fa-check-circle"></i> Бронируйте мгновенно онлайн</div>
+                <div class="indicator"><i class="fas fa-bed"></i> Бронируйте на нужды</div>
+                <div class="indicator"><i class="fas fa-umbrella"></i> Бесплатная отмена</div>
+            </div>
+
+            <div class="small-info">
+                <i class="fas fa-info-circle"></i> Символы зеленого замка и горячей чашки символизируют...
+            </div>
+
+            <header class="header" id="cards-section">
+                <h1>Самые популярные города для конференц-залов</h1>
+                <p>Откройте для себя популярные направления для бронирования конференц-зала.</p>
+            </header>
+
+
+            <div class="cards-grid" style="margin-bottom: 170px;">
+                {% for i in hot %}
+                <a href="{% url 'city' i.name_city %}">
+                    <div class="card">
+                        <div class="card-image-container">
+                            <img src="{{i.foto_city.url}}" class="card-image">
+                        </div>
+                        <div class="card-title">{{i.name_city}}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+
+    <section class="steps-section">
+        <div class="main-container">
+            <div class="steps-wrapper">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-text">
+                        <h3>Выбор</h3>
+                        <p>Найдите идеальное пространство через фильтры поиска.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-text">
+                        <h3>Бронь</h3>
+                        <p>Мгновенное подтверждение и безопасная оплата.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-text">
+                        <h3>Работа</h3>
+                        <p>Приходите и начинайте встречу. Мы позаботимся о деталях.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="spaces-section">
+            <div class="main-container">
+                <div class="section-header">
+                    <h2>Рекомендуемые локации</h2>
+                    <a href="card/" class="view-all">Смотреть все →</a>
+                </div>
+
+                <div class="spaces-grid" style="margin-bottom: 40px;">
+                    {% for i in cards %}
+                    <div class="modern-card" style="box-shadow: 0px 10px 14px -8px black;">
+                        <img src="{{i.image.url}}" class="card-image" alt="">
+                        <div class="card-content">
+                            {% for j in i.category.all %}
+                            <span class="card-category">{{j.name}}</span>
+                            {% endfor %}
+                            <h4>{{i.title}}</h4>
+                            <p class="card-location">📍 {{i.address}}</p>
+                            <div class="card-footer">
+                                <div class="card-price">от {{i.price}} KGS<span>/час</span></div>
+                                <form method="post" action="{% url 'bron' i.title %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="card-btn">
+                                        Забронировать <br>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <div class="nov" style="background-color: #002d5b; padding: 30px 0 30px; margin-top: 100px;">
+        <div class="container">
+            <footer class="footer">
+                <div class="footer-container"
+                    style="display: flex; justify-content: space-between; margin-bottom: 40px;">
+                    <div class="footer-section brand-info">
+                        <h2 class="logo">wezoo</h2>
+                        <p class="tagline">Be More. Work Anywhere.</p>
+                        <div class="socials">
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Информация</h3>
+                        <ul>
+                            <li><a href="hov">Как это работает</a></li>
+                            <li><a href="about">О нас</a></li>
+                            <li><a href="contact">Контакты</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+                    <div class="footer-section newsletter">
+                        <h3>Будьте в курсе</h3>
+                        <p>Новые локации и акции каждый месяц.</p>
+                        <div class="contact-links">
+                            <a
+                                href="https://mail.google.com/mail/?view=cm&to=abdulvaliys@gmail.com">abdulvaliys@gmail.com</a>
+                            <a href="tel:+70000000000">+996 555-22-56-57</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Wezoo. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="/about/">Политика конфиденциальности</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>

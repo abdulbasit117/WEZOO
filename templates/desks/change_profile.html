@@ -1,0 +1,29 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block title %}Main Page{% endblock %}
+
+
+
+{% block content %}
+
+
+<form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="container">
+        <div class="navigation">
+            <div class="global_inp">
+                <h1 class="word">Редактируйте профиль</h1>
+                <input type="text" name="username" placeholder="username">
+                <input type="email" name="email" placeholder="email">
+                <input type="file" name="image" placeholder="image">
+                <input type="text" name="password" placeholder="password">
+                <button type="submit">Cохранить</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block title %}Main Page{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<div class="listing-section">
+    <div class="container">
+
+        <div class="navim">
+            <header class="header1">
+                <div class="divs1">
+                    <h2>Доступные рабочие пространства</h2>
+                    <h2>совпадающих с фильтрами</h2>
+                    <p>Выберите лучшее место для вашей команды.</p>
+                </div>
+                <div class="wz-action-container">
+                    <a href="/create_card" class="action-btn offer-btn">
+                        + Предложить своё
+                    </a>
+
+                    <a href="{% url 'cards' %}" class="action-btn show-btn">
+                        Показать все места
+                    </a>
+                </div>
+
+
+            </header>
+
+            <div class="listing-card-container">
+                {% for i in cards %}
+
+                <div class="listing-card">
+
+                    <div class="listing-gallery">
+                        <img src="{{i.image.url}}" alt="Интерьер коворкинга" class="main-image">
+                    </div>
+
+                    <div class="listing-info">
+                        <div class="listing-header">
+                            <span class="provider-name">{{i.title}}</span>
+                            <h2 style="display: flex; gap: 7px; align-items: center;"> <img style="width: 15px;"
+                                    src="{% static 'assets/img/i (1).webp' %}" alt=""> {{i.address}}</h2>
+                        </div>
+
+                        <p class="description" style="margin-top: 20px;">{{i.description}}</p>
+
+                    </div>
+
+                    <div class="listing-pricing">
+
+                        <div class="rating-container">
+                            {% if i.feedback >= 9 %}
+                            <span class="rating-text">Оценка</span>
+                            <div class="rating-badge" style="background-color: #0219af;">{{i.feedback}}</div>
+                            {% elif i.feedback < 9 and i.feedback >= 6 %}
+                                <span class="rating-text">Оценка</span>
+                                <div class="rating-badge" style="background-color: #67af02;">{{i.feedback}}</div>
+                                {% elif i.feedback < 6 and i.feedback >= 3 %}
+                                    <span class="rating-text">Оценка</span>
+                                    <div class="rating-badge" style="background-color: #af6102;">{{i.feedback}}
+                                    </div>
+                                    {% elif i.feedback < 3 %} <span class="rating-text">Оценка</span>
+                                        <div class="rating-badge" style="background-color: #af0202;">{{i.feedback}}
+                                        </div>
+                                        {% endif %}
+                        </div>
+                        <div class="price-box">
+                            <span class="price-label"> Цены от:</span>
+                            <span class="price-value">{{i.price}} KGS</span>
+                        </div>
+
+                        <form method="post" action="{% url 'bron' i.title %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-book">
+                                Бронируйте <br> Сейчас
+                            </button>
+                        </form>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+
+
+<div class="profile-container">
+
+    <div class="profile-header">
+        <div class="profile-left">
+            {% if request.user.images %}
+                <img src="{{ request.user.images.url }}" class="profile-avatar">
+            {% else %}
+                <img class="profile-avatar" src="{% static 'assets/img/avatar.png' %}" alt="">
+            {% endif %}
+
+            <div>
+                <h2>{{ request.user.username }}</h2>
+                <p>{{ request.user.email }}</p>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <a href="/edit/" class="btn edit">Редактировать</a>
+            <a href="{% url 'logout' %}" class="btn logout">Выйти</a>
+        </div>
+    </div>
+
+    <div class="profile-tabs-wrap">
+  <div class="profile-tabs">
+    <a href="{% url 'profile' %}?tab=my"
+       class="profile-tab {% if tab == 'my' %}active{% endif %}">
+      Мои места <span class="tab-badge">{{ count_cards }}</span>
+    </a>
+
+    <a href="{% url 'profile' %}?tab=bookings"
+       class="profile-tab {% if tab == 'bookings' %}active{% endif %}">
+      Бронирования <span class="tab-badge">{{ count_book }}</span>
+    </a>
+  </div>
+</div>
+
+
+    {% if tab == "my" %}
+    <div style="display:flex; flex-direction:column; gap:50px; margin-top:30px;">
+        {% if cards %}
+            {% for i in cards %}
+            <div class="listing-card">
+
+                <div class="listing-gallery">
+                    <img style="height: 250px;" src="{{ i.image.url }}" alt="" class="main-image">
+                </div>
+
+                <div class="listing-info">
+                    <div class="listing-header">
+                        <span class="provider-name">{{ i.title }}</span>
+                        <h2 style="display:flex; gap:7px; align-items:center;">
+                            <img style="width: 15px;" src="{% static 'assets/img/i (1).webp' %}" alt="">
+                            {{ i.address }}
+                        </h2>
+                    </div>
+
+                    <p class="description" style="margin-top:20px;">{{ i.description }}</p>
+                </div>
+
+                <div class="listing-pricing">
+                    <div class="price-box">
+                        <span class="price-label">Цены от:</span>
+                        <span class="price-value">{{ i.price }} KGS</span>
+                    </div>
+
+                    <a href="{% url 'bron' i.id %}">
+                        <button class="btn-book">Бронировать</button>
+                    </a>
+                </div>
+
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="margin-top:20px;">У вас пока нет добавленных мест.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if tab == "bookings" %}
+    <div style="display:flex; flex-direction:column; gap:50px; margin-top:30px;">
+        {% if book %}
+            {% for b in book %}
+            <div class="listing-card">
+
+                <div class="listing-gallery">
+                    <img style="height: 250px;" src="{{ b.card.image.url }}" alt="" class="main-image">
+                </div>
+
+                <div class="listing-info">
+                    <div class="listing-header">
+                        <span class="provider-name">{{ b.card.title }}</span>
+                        <h2 style="display:flex; gap:7px; align-items:center;">
+                            <img style="width: 15px;" src="{% static 'assets/img/i (1).webp' %}" alt="">
+                            {{ b.card.address }}
+                        </h2>
+                    </div>
+
+                    <p class="description" style="margin-top:20px;">{{ b.card.description }}</p>
+
+                    <p class="bron-date">
+                        Забронировано: {{ b.created_at|date:"j F Y" }}
+
+                    </p>
+                </div>
+
+                <div class="listing-pricing">
+                    <div class="price-box">
+                        <span class="price-label">Цена:</span>
+                        <span class="price-value">{{ b.card.price }} KGS</span>
+                    </div>
+
+                    <a href="/profile/">
+                        <button class="btn-book">Отменить</button>
+                    </a>
+
+                    <a href="{% url 'bron' b.card.title %}">
+                        <button class="btn-book">Открыть</button>
+                    </a>
+                </div>
+
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="margin-top:20px;">Пока нет бронирований.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

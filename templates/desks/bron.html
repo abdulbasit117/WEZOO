@@ -1,0 +1,50 @@
+{% extends 'components/base.html' %}
+
+{% block content %}
+
+<section class="booking-wrapper">
+
+    <h2 class="booking-title">
+        ✅ Бронирование подтверждено
+    </h2>
+
+
+    <div class="booking-card-success" style="display: flex; flex-direction: column; gap: 40px; justify-content: center;">
+        <img src="{{cards.image.url}}" alt="картинка" class="booking-img" style="width: 650px;">
+
+        <div class="booking-info" style="display: flex; gap: 30px;align-items: center; display: flex; justify-content: center; ">
+            <div>
+                <iframe style="border-radius: 12px; border: none; height: 300px;" src="https://www.google.com/maps?q={{ card.address }}&output=embed" loading="lazy">
+                </iframe>
+            </div>
+            <div>
+                <h3 class="booking-room-title">{{ cards.title }}</h3>
+
+                <p class="booking-address">
+                    📍 {{ cards.address }}
+                </p>
+
+                <p class="booking-price">
+                    от {{ cards.price }} KGS / час
+                </p>
+
+                <div class="booking-ok">
+                    Ваше место успешно забронировано!
+                </div>
+
+                <a href="https://www.google.com/maps?q={{ cards.address }}" target="_blank" class="map-btn">
+                    Посмотреть на карте
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <a href="{% url 'main-page' %}" class="booking-back-btn">
+        Вернуться на главную
+    </a>
+
+</section>
+
+{% endblock %}
