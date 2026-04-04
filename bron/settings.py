@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-hqkqdkd-)$sd1_yf26o@u@vt@fw%=tsn6p-z&n77m@nryy1!yy
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'rest_framework.authtoken',
+    'corsheaders',
     
 ]
 
@@ -55,6 +56,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -65,6 +67,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bron.urls'
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",   # фронт локально
+    "https://your-frontend.vercel.app",  # твой фронт
+]
     
 TEMPLATES = [
     {
