@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "bron/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "bron/wsgi.py"
+    }
+  ],
+  "buildCommand": "bash build.sh"
+}
