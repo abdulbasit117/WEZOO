@@ -1,0 +1,294 @@
+/* ===== Красивые карточки профиля (Мои места / Бронирования) ===== */
+
+.listing-card{
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    gap: 20px;
+    padding: 18px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.listing-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.09);
+}
+
+.listing-gallery{
+    flex: 0 0 280px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f2f4f8;
+}
+
+.main-image{
+    width: 100%;
+    height: 190px;
+    display: block;
+    object-fit: cover;
+}
+
+.listing-info{
+    flex: 1;
+    min-width: 0;
+}
+
+.listing-header{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.provider-name{
+    font-size: 20px;
+    font-weight: 800;
+    color: #111;
+    line-height: 1.2;
+}
+
+.listing-header h2{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.description{
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.bron-date{
+    margin-top: 10px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* правая колонка */
+.listing-pricing{
+    flex: 0 0 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    padding-left: 10px;
+}
+
+.price-box{
+    background: #f6f8ff;
+    border: 1px solid rgba(45,108,223,0.15);
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.price-label{
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.price-value{
+    display: block;
+    font-size: 18px;
+    font-weight: 900;
+    color: #2d6cdf;
+}
+
+/* кнопка */
+.btn-book{
+    width: 100%;
+    border: 0;
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-weight: 800;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #2d6cdf, #4a86ff);
+    box-shadow: 0 12px 26px rgba(45,108,223,0.25);
+    transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.btn-book:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 16px 34px rgba(45,108,223,0.30);
+}
+
+.btn-book:active{
+    transform: translateY(0px);
+    opacity: .95;
+}
+
+/* убираем подчёркивание у ссылки вокруг кнопки */
+.listing-pricing a{
+    text-decoration: none;
+}
+
+/* ===== Tabs (красиво, как переключатель) ===== */
+
+.profile-tabs-wrap{
+    margin-top: 18px;
+}
+
+.profile-tabs{
+    display: inline-flex;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 14px;
+    background: #f3f6ff;
+    border: 1px solid rgba(45, 108, 223, 0.15);
+}
+
+.profile-tab{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    color: #2d6cdf;
+    background: transparent;
+
+    transition: background .15s ease, transform .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+.profile-tab:hover{
+    background: rgba(45, 108, 223, 0.10);
+}
+
+.profile-tab.active{
+    background: #2d6cdf;
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(45,108,223,0.22);
+}
+
+.tab-badge{
+    min-width: 28px;
+    height: 22px;
+    padding: 0 8px;
+    border-radius: 999px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    background: rgba(45,108,223,0.14);
+    color: #2d6cdf;
+}
+
+.profile-tab.active .tab-badge{
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+}
+/* ===== PROFILE (фикс аватара + кнопок + аккуратный вид) ===== */
+
+.profile-container{
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 18px; /* чтобы на краях не прилипало */
+}
+
+.profile-header{
+  background: #ffffff;
+  padding: 22px 26px;
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* левая часть */
+.profile-left{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 260px;
+}
+
+/* ВАЖНО: фиксируем аватар (перебивает img{width:100%} из других css) */
+.profile-avatar{
+  width: 90px !important;
+  height: 90px !important;
+  min-width: 90px !important;
+  min-height: 90px !important;
+  max-width: 90px !important;
+  max-height: 90px !important;
+
+  border-radius: 50% !important;
+  object-fit: cover !important;
+
+  display: block !important;
+  flex: 0 0 90px;
+}
+
+/* имя + почта */
+.profile-left h2{
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.profile-left p{
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* кнопки справа */
+.profile-actions{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* делаем именно эти две ссылки кнопками (не трогаем другие .btn на сайте) */
+.profile-actions a.btn{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 10px 16px !important;
+  border-radius: 12px !important;
+  text-decoration: none !important;
+
+  font-weight: 800 !important;
+  font-size: 14px !important;
+
+  border: 0 !important;
+  cursor: pointer !important;
+  transition: transform .12s ease, opacity .12s ease, box-shadow .12s ease !important;
+}
+
+.profile-actions a.btn:hover{
+  transform: translateY(-1px);
+  opacity: .95;
+}
+
+/* чтобы вкладки не прилипали и было аккуратно */
+.profile-tabs-wrap{
+  margin-top: 18px;
+}
