@@ -1,5 +1,57 @@
-.venv/
+# Virtual environments
 venv/
-.env/
-db.sqlite3/
-static/
+.venv/
+env/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# SQLite
+db.sqlite3
+
+# Static & media build files
+staticfiles/
+media/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Docker
+*.pid
+
+# Celery
+celerybeat-schedule
+
+# Ignore pycache inside migrations only
+*/migrations/__pycache__/

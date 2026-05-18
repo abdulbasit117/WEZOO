@@ -3,14 +3,14 @@ from rest_framework.mixins import ListModelMixin,UpdateModelMixin,DestroyModelMi
 from rest_framework import mixins,viewsets,response
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticatedOrReadOnly,AllowAny
-from rest_framework.viewsets import GenericViewSet,ModelViewSet
+from rest_framework.viewsets import GenericViewSet,ModelViewSet,ReadOnlyModelViewSet
 from .models import Cards,CustomUser, City
 from rest_framework.parsers import MultiPartParser,FormParser
 from .permisions import IsAdminOrReadOnly,IsOwnerOrReadOnly
 
 from .serializers import CardsSerializer, HotDesksSerializer,RegisterSerializer,LoginSerializer
 
-class CardsViewSet(CreateModelMixin,ListModelMixin,UpdateModelMixin,DestroyModelMixin,RetrieveModelMixin,GenericViewSet):
+class CardsViewSet(ReadOnlyModelViewSet):
     permission_classes = [IsOwnerOrReadOnly,IsAuthenticatedOrReadOnly,IsAdminOrReadOnly]
     queryset = Cards.objects.all()
     serializer_class = CardsSerializer
@@ -25,8 +25,6 @@ class RegisterViewSet(mixins.CreateModelMixin,viewsets.GenericViewSet):
 class LoginViewSet(mixins.CreateModelMixin,viewsets.GenericViewSet):
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
-
-    
 
     def create(self, request, *args, **kwargs):
         data = request.data

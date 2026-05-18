@@ -10,15 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+from email.policy import default
 from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
 import rest_framework
 
+from pathlib import Path
+import os
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+load_dotenv(os.path.join(BASE_DIR, ".env")) # Указываем путь явно
 
 SECRET_KEY = 'django-insecure-hqkqdkd-)$sd1_yf26o@u@vt@fw%=tsn6p-z&n77m@nryy1!yy'
 
@@ -92,24 +96,17 @@ WSGI_APPLICATION = 'bron.wsgi.application'
 
 
 
-if "VERCEL" in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': '/tmp/db.sqlite3',
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('POSTGRES_DB', 'deskly_db'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres12345'),
+        'HOST': os.getenv('POSTGRES_HOST', 'postgres'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('POSTGRES_DB', 'deskly_db'),
-            'USER': os.getenv('POSTGRES_USER', 'postgres'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres12345'),
-            'HOST': os.getenv('POSTGRES_HOST', 'postgres'),
-            'PORT': os.getenv('POSTGRES_PORT', '5432'),
-        }
-    }
+}
 
 
 
@@ -145,15 +142,10 @@ USE_TZ = True
 
 
 
-import os
-
 STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 
