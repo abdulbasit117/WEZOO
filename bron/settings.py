@@ -168,3 +168,12 @@ REST_FRAMEWORK = {
 
 
 
+STATIC_URL = '/static/'
+
+# Папка, где лежат твои ИСХОДНЫЕ файлы (разработка)
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+# Папка, куда Django СОБЕРЕТ всю статику для продакшена через collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
