@@ -23,8 +23,6 @@ dist/
 db.sqlite3
 
 # Static & media build files
-staticfiles/
-media/
 
 # IDEs
 .vscode/
